@@ -106,7 +106,7 @@ def get_bet():
             if MIN_BET<=amount<=MAX_BET:
                 break              
             else:
-                print(f"amount must be greater than or equalt to {MIN_BET}")
+                print(f"amount must be between ${MIN_BET} and ${MAX_BET}")
         else:
             print("please enter a valid number")
     return amount            
@@ -118,7 +118,7 @@ def spin(balance):
          total_bet =bet * lines
 
          if total_bet>balance:
-             print(f"you do not have enough balance to continue,if you want to conntinue add more money")
+             print(f"you do not have enough balance. Your balance: ${balance}, Total bet: ${total_bet}")
          else:
              break
         
@@ -143,7 +143,7 @@ def main():                             #used when the user wants to play again 
         if answer=="q":
             break
         balance+=spin(balance)
-    print(f"you lest with ${balance}")    
+    print(f"you left with ${balance}")    
 
 
 
