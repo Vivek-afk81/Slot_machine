@@ -10,18 +10,14 @@ from game.slotmachine import (
     symbol_value,
 )
 
-# --------------------------------------------------
-# PAGE CONFIG
-# --------------------------------------------------
+
 st.set_page_config(
     page_title="Golden Jackpot Casino",
     page_icon="🎰",
     layout="wide"
 )
 
-# --------------------------------------------------
-# CUSTOM GOLD NEON THEME
-# --------------------------------------------------
+# Theme
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700;900&display=swap');
@@ -94,9 +90,9 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# --------------------------------------------------
+
 # SESSION STATE INIT
-# --------------------------------------------------
+
 if "balance" not in st.session_state:
     st.session_state.balance = 1000
 
@@ -124,9 +120,9 @@ if "total_won" not in st.session_state:
 if "balance_history" not in st.session_state:
     st.session_state.balance_history = [1000]
 
-# --------------------------------------------------
+
 # SIDEBAR (Stats Only)
-# --------------------------------------------------
+
 with st.sidebar:
     st.markdown("### GAME STATS")
     st.metric("Spins", st.session_state.spins_count)
@@ -138,15 +134,15 @@ with st.sidebar:
             del st.session_state[key]
         st.rerun()
 
-# --------------------------------------------------
 # MAIN TITLE
-# --------------------------------------------------
 st.markdown('<div class="main-title">GOLDEN JACKPOT</div>', unsafe_allow_html=True)
-st.markdown('<div class="subtitle">VEGAS STYLE SLOT MACHINE</div>', unsafe_allow_html=True)
+st.markdown('<div class="subtitle">BIG WINS AWAIT</div>', unsafe_allow_html=True)
 
-# --------------------------------------------------
+
+
+
 # DEPOSIT SECTION (MAIN AREA)
-# --------------------------------------------------
+
 st.markdown("### DEPOSIT FUNDS")
 
 col1, col2 = st.columns([3,1])
@@ -170,9 +166,8 @@ with col2:
         else:
             st.error("Enter valid amount")
 
-# --------------------------------------------------
+
 # BALANCE DISPLAY
-# --------------------------------------------------
 st.markdown(f"""
 <div class="balance-box">
 <h2>BALANCE: ${st.session_state.balance:,}</h2>
@@ -181,9 +176,9 @@ st.markdown(f"""
 
 st.divider()
 
-# --------------------------------------------------
+#
 # GAME CONTROLS
-# --------------------------------------------------
+
 if st.session_state.balance > 0:
 
     col1, col2, col3, col4 = st.columns([2,2,2,2])
@@ -234,9 +229,11 @@ if st.session_state.balance > 0:
 else:
     st.warning("Out of money! Deposit to continue.")
 
-# --------------------------------------------------
+
 # SLOT DISPLAY
-# --------------------------------------------------
+
+
+
 if st.session_state.slots is not None:
 
     st.markdown('<div class="slot-frame">', unsafe_allow_html=True)
@@ -265,9 +262,7 @@ if st.session_state.slots is not None:
         st.info("No winning lines.")
 
 
-# --------------------------------------------------
 # ANALYTICS
-# --------------------------------------------------
 if st.session_state.spins_count > 0:
 
     st.divider()
